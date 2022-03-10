@@ -1,7 +1,7 @@
 # WebDevProject
  Final Project For WebDevelopment
 
-## 												Group
+## 									   Group
 						| Group Member Name | GitHub Username (GitHub URL)		      |
 						| :----------------:|:-----------------------------------------------:|
 						| Jack Bownman 	    | [1bowmanjac](https://github.com/1bowmanjac)     |
