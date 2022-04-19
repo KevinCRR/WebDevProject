@@ -36,6 +36,7 @@ cluster = pymongo.MongoClient("mongodb+srv://WebDev2022Default:ThisIsThePassword
 db = cluster["WordleCloneDB"]
 
 
-# examples
-# addScore("testUser1",123)
-# addUser("testUser2", "password")
+for i in range(20):
+    addScore("dummyUser" + str(i),i + 100)
+    addUser("dummyUser" + str(i), "password" + str(i))
+
