@@ -9,7 +9,7 @@ def Register(username, password):
     # select the users table/colection
     usersCollection = db["users"]
     userExists = usersCollection.find_one({"username":username})
-    if(userExists is None):
+    if(userExists is None and len(password) >= 5 and len(password) <= 20 and any(x.isupper() for x in password) and any(x.islower() for x in password) and any(x.isdigit() for x in password)):
         # user format
         newUser = {
         "username":username,
@@ -18,8 +18,11 @@ def Register(username, password):
         # insert user into database
         usersCollection.insert_one(newUser) 
         return True
-    else:
+    if(userExists):
         print("error User Exists")
+        return False
+    else:
+        print("password does not meet requirments")
         return False
         
 def Login(username, password):
@@ -42,5 +45,7 @@ def Login(username, password):
         return ""
 
     
-Register("peter","123")
+Register("peter1","123")
+Register("peter2","Abc123")
 Login("peter","123")
+Login("peter2","Abc123")
