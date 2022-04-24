@@ -1,6 +1,7 @@
 import pymongo 
 import datetime
 
+#this function depreciated into Register in login.py
 def addUser(username,password):
     # mongoDB connection stuff to overall cluster
     cluster = pymongo.MongoClient("mongodb+srv://WebDev2022Default:ThisIsThePassword@wordlecluster.juzoh.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")

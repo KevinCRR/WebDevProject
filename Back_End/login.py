@@ -9,6 +9,7 @@ def Register(username, password):
     # select the users table/colection
     usersCollection = db["users"]
     userExists = usersCollection.find_one({"username":username})
+    #user must not already exist and password must be between 4-21 characters and contain an upper case lower case and a number
     if(userExists is None and len(password) >= 5 and len(password) <= 20 and any(x.isupper() for x in password) and any(x.islower() for x in password) and any(x.isdigit() for x in password)):
         # user format
         newUser = {
