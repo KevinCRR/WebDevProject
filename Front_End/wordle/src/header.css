@@ -1,0 +1,19 @@
+#header-content {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: 2.5vmin;
+}
+
+.Scoreboard {
+  height: 3.5vmin;
+  color: white;
+}
+
+.Menu {
+  height: 3.5vmin;
+  color: white;
+}
+
+img:hover {
+  cursor: pointer;
+}
