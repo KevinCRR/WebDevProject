@@ -30,11 +30,11 @@ root.render(
     <Navigation />
     <ul className="side-categories" style={{ display: "none" }}>
       <li>
-        <a href="#">Login</a>
+        <a href="login">Login</a>
       </li>
       <hr />
       <li>
-        <a href="#">Register</a>
+        <a href="register">Register</a>
       </li>
     </ul>
 
