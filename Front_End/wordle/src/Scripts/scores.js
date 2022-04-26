@@ -1,5 +1,5 @@
-import logo from "./logo.svg";
-import "./App.css";
+import logo from "../Assets/logo.svg";
+import "../Styles/App.css";
 import axios from "axios";
 import React from "react";
 
