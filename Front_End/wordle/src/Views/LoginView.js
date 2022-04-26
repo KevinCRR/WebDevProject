@@ -34,6 +34,19 @@ function LoginView({ setToken }) {
     console.log(uname.value);
     console.log(pass);
 
+    //const [username, setUsername] = useState([]);
+
+    //useEffect(() => {
+    //  fetch("http://localhost:5000/login/"+ uname.value).then(response =>
+    //    response.json().then(response => {
+    //      setUsername(response)
+    //    }).catch(err => {
+    //      console.log(123123);
+    //    })
+    //  );
+    //},[]);
+    //console.log(username + "test call from database")
+
     // Will change to call backend api, right not just a place holder.
     const userData = database.find((user) => user.username === uname.value);
 
