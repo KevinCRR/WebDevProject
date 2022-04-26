@@ -1,6 +1,10 @@
 import pymongo 
 import bcrypt
+from flask import Flask
 
+app = Flask(__name__)
+
+@app.route('/register/<username>/<password>')
 def Register(username, password):
     # mongoDB connection stuff to overall cluster
     cluster = pymongo.MongoClient("mongodb+srv://WebDev2022Default:ThisIsThePassword@wordlecluster.juzoh.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
@@ -25,7 +29,8 @@ def Register(username, password):
     else:
         print("password does not meet requirments")
         return False
-        
+    
+@app.route('/login/<username>/<password>')    
 def Login(username, password):
     # mongoDB connection stuff to overall cluster
     cluster = pymongo.MongoClient("mongodb+srv://WebDev2022Default:ThisIsThePassword@wordlecluster.juzoh.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
@@ -45,6 +50,8 @@ def Login(username, password):
         print('user does not exist')
         return ""
 
+if __name__ == '__main__':
+    app.run()
     
 Register("peter1","123")
 Register("peter2","Abc123")
