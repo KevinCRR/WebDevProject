@@ -46,6 +46,16 @@ def fetchScoreDate(date):
     scoresCollection = db["scores"]
 
     return scoresCollection.find({"date":date})
+
+@app.route('/score')
+def fetchScoreDate():
+    # mongoDB connection stuff to overall cluster
+    cluster = pymongo.MongoClient("mongodb+srv://WebDev2022Default:ThisIsThePassword@wordlecluster.juzoh.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
+    # select the WordleCloneDB database from the cluster
+    db = cluster["WordleCloneDB"]
+    scoresCollection = db["scores"]
+
+    return scoresCollection.find()
     
 if __name__ == '__main__':
     app.run()
