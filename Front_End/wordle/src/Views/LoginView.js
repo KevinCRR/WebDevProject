@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import "../Styles/login.css";
-function LoginView() {
+function LoginView({ setToken }) {
   // states for error handling and login flags
   const [errorMessages, setErrorMessages] = useState({});
   const [isSubmitted, setIsSubmitted] = useState(false);
+  // const [isLoggedIn, setLoggedFlag] = useState(false);
 
   const errors = {
     uname: "invalid username!",
@@ -34,7 +35,7 @@ function LoginView() {
     console.log(pass);
 
     // Will change to call backend api, right not just a place holder.
-    const userData = database.find((user) => user.username == uname.value);
+    const userData = database.find((user) => user.username === uname.value);
 
     // Compare user info (this will be moved to backedn)
     if (userData) {
@@ -42,6 +43,8 @@ function LoginView() {
         setErrorMessages({ name: "pass", message: errors.pass });
       } else {
         setIsSubmitted(true);
+        // setLoggedFlag(true);
+        setToken(true);
       }
     } else {
       // Username not found

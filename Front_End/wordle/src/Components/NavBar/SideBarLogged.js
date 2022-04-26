@@ -3,7 +3,7 @@ import * as AiIcons from "react-icons/ai";
 import * as BsIcons from "react-icons/bs";
 import * as MdIcons from "react-icons/md";
 
-export const SideBarData = [
+export const SideBarDataLogged = [
   {
     title: "Home",
     path: "/",
@@ -11,15 +11,15 @@ export const SideBarData = [
     cName: "nav-text",
   },
   {
-    title: "Login",
-    path: "/login",
-    icon: <BsIcons.BsKeyFill />,
+    title: "Logout",
+    path: "/",
+    icon: <BsIcons.BsBoxArrowRight />,
     cName: "nav-text",
   },
   {
-    title: "Register",
-    path: "/register",
-    icon: <BsIcons.BsClipboard />,
+    title: "Profile",
+    path: "/profile",
+    icon: <BsIcons.BsFillPersonFill />,
     cName: "nav-text",
   },
   {
