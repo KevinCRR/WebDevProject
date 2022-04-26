@@ -2,6 +2,7 @@ import pymongo
 import datetime
 from flask import Flask
 import json
+from bson.json_util import dumps
 
 app = Flask(__name__)
 
@@ -33,7 +34,7 @@ def fetchScoreUser(username):
     scoresCollection = db["scores"]
     userExists = usersCollection.find_one({"username":username})
     if(userExists):
-        return list(scoresCollection.find({"username":username}))
+        return dumps(list(scoresCollection.find({"username":username})))
     else:
         print('user does not exist')
         return ""
@@ -46,7 +47,7 @@ def fetchScoreDate(date):
     db = cluster["WordleCloneDB"]
     scoresCollection = db["scores"]
 
-    return list(scoresCollection.find({"date":date}))
+    return dumps(list(scoresCollection.find({"date":date})))
 
 @app.route('/score')
 def fetchScore():
@@ -56,7 +57,7 @@ def fetchScore():
     db = cluster["WordleCloneDB"]
     scoresCollection = db["scores"]
 
-    return list(scoresCollection.find())
+    return dumps(list(scoresCollection.find()))
     
 if __name__ == '__main__':
     app.run()
