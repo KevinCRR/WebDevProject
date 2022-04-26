@@ -1,6 +1,7 @@
 import pymongo 
 import datetime
 from flask import Flask
+import json
 
 app = Flask(__name__)
 
@@ -32,7 +33,7 @@ def fetchScoreUser(username):
     scoresCollection = db["scores"]
     userExists = usersCollection.find_one({"username":username})
     if(userExists):
-        return scoresCollection.find({"username":username})
+        return list(scoresCollection.find({"username":username}))
     else:
         print('user does not exist')
         return ""
@@ -45,20 +46,21 @@ def fetchScoreDate(date):
     db = cluster["WordleCloneDB"]
     scoresCollection = db["scores"]
 
-    return scoresCollection.find({"date":date})
+    return list(scoresCollection.find({"date":date}))
 
 @app.route('/score')
-def fetchScoreDate():
+def fetchScore():
     # mongoDB connection stuff to overall cluster
     cluster = pymongo.MongoClient("mongodb+srv://WebDev2022Default:ThisIsThePassword@wordlecluster.juzoh.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
     # select the WordleCloneDB database from the cluster
     db = cluster["WordleCloneDB"]
     scoresCollection = db["scores"]
 
-    return scoresCollection.find()
+    return list(scoresCollection.find())
     
 if __name__ == '__main__':
     app.run()
     
 print(fetchScoreUser("peter")[1])
 print(fetchScoreDate("26/04/2022")[0])
+print(fetchScore())
