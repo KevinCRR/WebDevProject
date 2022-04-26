@@ -10,6 +10,11 @@ api = Api(app)
 class Word(Resource):
 
     def get(self):
+        """
+        get will fetch the days word
+
+        return: the daily word
+        """
         word = get_daily_word()
         return word, 200
     
