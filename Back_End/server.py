@@ -93,13 +93,13 @@ def Register(username, password):
         }
         # insert user into database
         usersCollection.insert_one(newUser) 
-        return True
+        return "success"
     if(userExists):
         print("error User Exists")
-        return False
+        return "failure User Exists"
     else:
         print("password does not meet requirments")
-        return False
+        return "failure Password Invalid"
     
 @app.route('/login/<username>/<password>')    
 def Login(username, password):
@@ -113,7 +113,10 @@ def Login(username, password):
     if(userExists):
         if(bcrypt.hashpw(password.encode('utf-8'), userExists['password']) == userExists['password']):
             print("logged in")
-            return fetchScoreUser(username)
+            if (len(fetchScoreUser(username)) == 2):
+                return "null"
+            else:
+                return fetchScoreUser(username)
         else:
             print("wrong username/password")
             return ""
