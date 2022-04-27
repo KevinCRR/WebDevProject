@@ -58,7 +58,7 @@ function BoardView() {
     /**
      * gameOver and word is correct
      */
-    if (currWord.toLowerCase === correctWord) {
+    if (currWord.toLowerCase === correctWord.toLowerCase) {
       setGameOver({ gameOver: true, guessedWord: true });
       return;
     }

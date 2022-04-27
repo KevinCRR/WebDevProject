@@ -21,7 +21,7 @@ function GameOver() {
           ? "You Correctly Guessed the Wordle"
           : "You Failed to Guess the Word"}
       </h3>
-      <h1>Correct Word is: {correctWord}</h1>
+      <h1>Correct Word is: {correctWord.toUpperCase()}.</h1>
       {gameOver.guessedWord && (
         <h3>You guessed in {currAttempt.attempt} attempts</h3>
       )}
