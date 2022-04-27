@@ -18,7 +18,7 @@ def addScore(username,score):
     newScore = {
                 "username":username,
                 "score":score,
-                "date":datetime.date.today().strftime("%d/%m/%Y") 
+                "date":datetime.date.today().strftime("%d-%m-%Y") 
                 }
 
     scoresCollection.insert_one(newScore)
