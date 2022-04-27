@@ -1,4 +1,4 @@
-import wordBank from 'http://127.0.0.1:5000/dailyWord'
+import axios from 'axios'
 
 export const defaultBoard = [
     ["", "", "", "", ""],
@@ -10,16 +10,14 @@ export const defaultBoard = [
 ];
 
 
-export const getWord = async () => {
-    let wordSet;
-    let todaysWord;
-    await fetch(wordBank)
-      .then((response) => response.text())
-      .then((result) => {
-        const wordArr = result.split("\n");
-        todaysWord = wordArr[Math.floor(Math.random() * wordArr.length)];
-        wordSet = new Set(wordArr);
-      });
-    return { wordSet, todaysWord };
-  };
+export const getWord = () => {
+  const url = 'http://127.0.0.1:5000/dailyWord'
+  let wordSet;
+  let todaysWord;
+  axios.get(`${url}word`).then((response) => response.text()).then((result) =>{
+    const todaysWord = result
+    wordSet = new Set(todaysWord)
+  });
+  return { wordSet, todaysWord };
+};
   
