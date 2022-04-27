@@ -2,7 +2,7 @@ import "../Styles/Board.css";
 import PlayBoard from "../Components/Board/PlayBoard";
 import KeyBoard from "../Components/Board/KeyBoard";
 import { defaultBoard, getWord } from "../Components/Board/board";
-import React, { useState, createContext,useEffect } from "react";
+import React, { useState, createContext, useEffect } from "react";
 import GameOver from "../Components/Board/GameOver";
 
 export const boardContext = createContext();
@@ -13,8 +13,8 @@ function BoardView() {
    * 1. Sets the board to the current state of 5x6
    * 2. Checks the attemp(row) and letter(correct letter) using useState
    * 3. Creates a new word set for the day
-   * 4. Checks if the word is correct and applies the corresponding css 
-   * 5. Let's the 
+   * 4. Checks if the word is correct and applies the corresponding css
+   * 5. Let's the
    */
   const [board, setBoard] = useState(defaultBoard);
   const [currAttempt, setCurrAttempt] = useState({ attempt: 0, letter: 0 });
@@ -25,16 +25,18 @@ function BoardView() {
     gameOver: false,
     guessedWord: false,
   });
-  
+
   useEffect(() => {
-    getWord().then((words) => {
+    getWord((words) => {
+      console.log(words.wordSet);
+      console.log(words.todaysWord);
       setWordSet(words.wordSet);
       setCorrectWord(words.todaysWord);
     });
   }, []);
-  
+
   /**
-   * 
+   *
    * Checks the word in each row
    * If a letter is right allow, perform a check
    * If the word guess is correct, end the game
@@ -70,7 +72,6 @@ function BoardView() {
     }
   };
 
-
   const onDelete = () => {
     if (currAttempt.letter === 0) return;
     const newBoard = [...board];
@@ -92,7 +93,6 @@ function BoardView() {
 
   return (
     <div className="Board">
-      
       <boardContext.Provider
         value={{
           board,

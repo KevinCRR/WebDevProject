@@ -1,23 +1,33 @@
-import axios from 'axios'
+import axios from "axios";
 
 export const defaultBoard = [
-    ["", "", "", "", ""],
-    ["", "", "", "", ""],
-    ["", "", "", "", ""],
-    ["", "", "", "", ""],
-    ["", "", "", "", ""],
-    ["", "", "", "", ""],
+  ["", "", "", "", ""],
+  ["", "", "", "", ""],
+  ["", "", "", "", ""],
+  ["", "", "", "", ""],
+  ["", "", "", "", ""],
+  ["", "", "", "", ""],
 ];
 
-
 export const getWord = () => {
-  const url = 'http://127.0.0.1:5000/dailyWord'
   let wordSet;
   let todaysWord;
-  axios.get(`${url}word`).then((response) => response.text()).then((result) =>{
-    const todaysWord = result
-    wordSet = new Set(todaysWord)
-  });
+
+  var axios = require("axios");
+
+  var config = {
+    method: "get",
+    url: "http://127.0.0.1:5000/dailyWord",
+    headers: {},
+  };
+
+  axios(config)
+    .then(function (response) {
+      const todaysWord = JSON.stringify(response.data);
+      wordSet = new Set(todaysWord);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
   return { wordSet, todaysWord };
 };
-  

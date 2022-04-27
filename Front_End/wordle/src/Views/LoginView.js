@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import axios from "axios";
 import "../Styles/login.css";
 function LoginView({ setToken }) {
   // states for error handling and login flags
@@ -16,12 +17,12 @@ function LoginView({ setToken }) {
   // place holder for db will change to match api call
   const database = [
     {
-      username: "user1",
-      password: "pass1",
+      username: "peter",
+      password: "Peter1",
     },
     {
-      username: "user2",
-      password: "pass2",
+      username: "billy",
+      password: "Test1",
     },
   ];
 
@@ -34,18 +35,19 @@ function LoginView({ setToken }) {
     console.log(uname.value);
     console.log(pass);
 
-    //const [username, setUsername] = useState([]);
+    var config = {
+      method: "get",
+      url: "http://127.0.0.1:5000/login/" + uname.value + "/" + pass.value,
+      headers: {},
+    };
 
-    //useEffect(() => {
-    //  fetch("http://localhost:5000/login/"+ uname.value).then(response =>
-    //    response.json().then(response => {
-    //      setUsername(response)
-    //    }).catch(err => {
-    //      console.log(123123);
-    //    })
-    //  );
-    //},[]);
-    //console.log(username + "test call from database")
+    axios(config)
+      .then(function (response) {
+        console.log(JSON.stringify(response.data));
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
 
     // Will change to call backend api, right not just a place holder.
     const userData = database.find((user) => user.username === uname.value);
