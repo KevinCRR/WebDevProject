@@ -12,7 +12,7 @@ export const SideBarDataLogged = [
   },
   {
     title: "Logout",
-    path: "/",
+    path: "/logout",
     icon: <BsIcons.BsBoxArrowRight />,
     cName: "nav-text",
   },

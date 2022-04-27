@@ -3,11 +3,16 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
 import "../Styles/login.css";
+import { useNavigate } from "react-router-dom";
+
 function LoginView({ setToken }) {
   // states for error handling and login flags
   const [errorMessages, setErrorMessages] = useState({});
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [userName, setuserName] = useState("User");
+  let navigate = useNavigate();
   // const [isLoggedIn, setLoggedFlag] = useState(false);
+  var username = "User";
 
   const errors = {
     uname: "invalid username!",
@@ -26,6 +31,17 @@ function LoginView({ setToken }) {
     },
   ];
 
+  const delay = (millis) =>
+    new Promise((resolve, reject) => {
+      setTimeout((_) => resolve(), millis);
+    });
+
+  const redirect = async () => {
+    console.log("here");
+    await delay(10000);
+    navigate("/");
+  };
+
   // this will become an axios call
   const handleSubmit = (event) => {
     //Prevent page reload
@@ -43,7 +59,16 @@ function LoginView({ setToken }) {
 
     axios(config)
       .then(function (response) {
-        console.log(JSON.stringify(response.data));
+        var data = JSON.stringify(response.data);
+        if (data.includes("[")) {
+          localStorage.setItem("userInfo", data);
+          data = JSON.parse(data);
+          setuserName(data[0].username);
+          console.log(data);
+          // setter
+        } else {
+        }
+        setIsSubmitted(true);
       })
       .catch(function (error) {
         console.log(error);
@@ -53,11 +78,11 @@ function LoginView({ setToken }) {
     const userData = database.find((user) => user.username === uname.value);
 
     // Compare user info (this will be moved to backedn)
+
     if (userData) {
       if (userData.password !== pass.value) {
         setErrorMessages({ name: "pass", message: errors.pass });
       } else {
-        setIsSubmitted(true);
         // setLoggedFlag(true);
         setToken(true);
       }
@@ -106,8 +131,14 @@ function LoginView({ setToken }) {
   return (
     <div className="app">
       <div className="login-form">
-        <div className="title">Sign In</div>
-        {isSubmitted ? <div>User is successfully logged in</div> : renderForm}
+        <div className="sign-title">Sign In</div>
+        {isSubmitted ? (
+          <div>
+            {userName} is successfully logged in {redirect}
+          </div>
+        ) : (
+          renderForm
+        )}
       </div>
     </div>
   );

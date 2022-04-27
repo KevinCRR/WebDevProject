@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import { Link } from "react-router-dom";
@@ -7,18 +7,20 @@ import { SideBarDataLogged } from "./SideBarLogged";
 import "../../Styles/navbar.css";
 import { IconContext } from "react-icons";
 
-function Navbar(props) {
+function Navbar() {
   const [sidebar, setSidebar] = useState(false);
+  const [data, setData] = useState(SideBarData);
   // const [isLoggedIn, setLoggedFlag] = useState(false);
-  var data = [];
 
   const showSidebar = () => setSidebar(!sidebar);
 
-  if (props.isLogged) {
-    data = SideBarDataLogged;
-  } else {
-    data = SideBarData;
-  }
+  useEffect(() => {
+    if (localStorage.getItem("userInfo")) {
+      setData(SideBarDataLogged);
+    } else {
+      setData(SideBarData);
+    }
+  });
 
   return (
     <>

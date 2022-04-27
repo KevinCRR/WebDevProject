@@ -1,4 +1,8 @@
-.home,.login,.register,.score,.boardview{
+.home,
+.login,
+.register,
+.score,
+.boardview {
   display: flex;
   height: 90vh;
   align-items: center;
@@ -9,7 +13,6 @@
 .home {
   text-align: center;
 }
-
 
 .Home-logo {
   height: 30vmin;
@@ -38,6 +41,11 @@
 }
 
 @keyframes Home-logo-spin {
-  0%, 100%{ transform: rotate(-8deg);}
-  50%{ transform: rotate(6deg); }
+  0%,
+  100% {
+    transform: rotate(-8deg);
+  }
+  50% {
+    transform: rotate(6deg);
+  }
 }

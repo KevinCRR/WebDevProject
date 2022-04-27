@@ -5,9 +5,9 @@
   justify-content: start;
   align-items: center;
 }
-.title{
+.title {
   color: white;
-  font-family: 'Times New Roman', Times, serif;
+  font-family: "Times New Roman", Times, serif;
   margin-left: auto;
   margin-right: auto;
   font-size: 40px;
@@ -29,6 +29,7 @@
   top: 0;
   left: -100%;
   transition: 2s;
+  z-index: 1;
 }
 
 .nav-menu.active {

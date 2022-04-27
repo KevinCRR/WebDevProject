@@ -6,7 +6,7 @@
   flex-direction: column;
   gap: 20px;
   height: 100vh;
-  background-color: #f8f9fd;
+  background-color: #c0c0c0;
 }
 
 input[type="text"],
@@ -49,9 +49,10 @@ input[type="submit"]:hover {
   font-size: 12px;
 }
 
-.title {
+.sign-title {
   font-size: 25px;
   margin-bottom: 20px;
+  color: black;
 }
 
 .input-container {
