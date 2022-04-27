@@ -22,7 +22,7 @@ function App() {
           <Route path="/login" element={<LoginView setToken={setToken} />} />
           <Route path="/register" element={<RegisterView />} />
           <Route path="/score" element={<ScoreView />} />
-          <Route path="/board" element={<BoardView />} />
+          <Route path="/boardview" element={<BoardView />} />
         </Routes>
       </Router>
     </>

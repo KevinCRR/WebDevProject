@@ -30,7 +30,7 @@ export const SideBarDataLogged = [
   },
   {
     title: "View Board",
-    path: "/board",
+    path: "/boardview",
     icon: <BsIcons.BsFillGrid3X3GapFill />,
     cName: "nav-text",
   },
