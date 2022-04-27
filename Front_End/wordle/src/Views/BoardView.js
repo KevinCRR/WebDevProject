@@ -26,14 +26,14 @@ function BoardView() {
     guessedWord: false,
   });
 
-  useEffect(() => {
-    getWord((words) => {
-      console.log(words.wordSet);
-      console.log(words.todaysWord);
-      setWordSet(words.wordSet);
-      setCorrectWord(words.todaysWord);
-    });
-  }, []);
+  useEffect(() =>{
+    getWord().then((words) => {
+      setWordSet(words.wordSet)
+      setCorrectWord(words.todaysWord)
+    })
+  },[]);
+
+  
 
   /**
    *
@@ -53,15 +53,16 @@ function BoardView() {
     } else {
       alert("Word not found");
     }
-
+    console.log(correctWord)
+    console.log(currWord)
     /**
      * gameOver and word is correct
      */
-    if (currWord === correctWord) {
+    if (currWord.toLowerCase === correctWord) {
       setGameOver({ gameOver: true, guessedWord: true });
       return;
     }
-    console.log(currAttempt);
+
 
     /**
      * gameOver and word was not guessed correctly

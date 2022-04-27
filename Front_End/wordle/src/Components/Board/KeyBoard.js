@@ -7,7 +7,8 @@ function KeyBoard() {
   const keyboard2 = ["A", "S", "D", "F", "G", "H", "J", "K", "L"];
   const keyboard3 = ["Z", "X", "C", "V", "B", "N", "M"];
 
-  const {
+  const { 
+    board,
     disabledLetters,
     currAttempt,
     gameOver,
@@ -60,7 +61,6 @@ function KeyBoard() {
    * This runs to disable/informs users that a letter they chose is not 
    * in the word bank 
    */
-  console.log(disabledLetters);
   return (
     <div className="keyboard" onKeyDown={handleKeyboard}>
       <div className="line1">
@@ -68,11 +68,13 @@ function KeyBoard() {
           return <Key keyVal={key} disabled={disabledLetters.includes(key)} />;
         })}
       </div>
+
       <div className="line2">
         {keyboard2.map((key) => {
           return <Key keyVal={key} disabled={disabledLetters.includes(key)} />;
         })}
       </div>
+      
       <div className="line3">
         <Key keyVal={"ENTER"} bigKey />
         {keyboard3.map((key) => {
