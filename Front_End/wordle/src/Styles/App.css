@@ -1,14 +1,43 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: 'Times New Roman', Times, serif;
-}
-
 .home,.login,.register,.score,.boardview{
   display: flex;
   height: 90vh;
   align-items: center;
   justify-content: center;
   font-size: 3rem;
+}
+
+.home {
+  text-align: center;
+}
+
+
+.Home-logo {
+  height: 30vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .Home-logo {
+    animation: Home-logo-spin infinite 4.5s linear;
+  }
+}
+
+.Home-header {
+  background-color: white;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: black;
+}
+
+.Home-link {
+  color: #1a373f;
+}
+
+@keyframes Home-logo-spin {
+  0%, 100%{ transform: rotate(-8deg);}
+  50%{ transform: rotate(6deg); }
 }
