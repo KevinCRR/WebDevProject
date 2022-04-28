@@ -18,7 +18,7 @@ function redirect() {
 
 function LoginView() {
   // states for error handling and login flags
-  const [errorMessages, setErrorMessages] = useState({});
+  const [errorMessages, setErrorMessages] = useState();
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSignedIn, setIsSignedIn] = useState("Sign In");
   const [userName, setuserName] = useState();
@@ -26,35 +26,12 @@ function LoginView() {
   var userInfo = localStorage.getItem("userInfo");
 
   if (!userInfo) {
-    // const [isLoggedIn, setLoggedFlag] = useState(false);
-    var username = "User";
-
-    const errors = {
-      uname: "invalid username!",
-      pass: "invalid password",
-    };
-
-    // place holder for db will change to match api call
-    const database = [
-      {
-        username: "peter",
-        password: "Peter1",
-      },
-      {
-        username: "billy",
-        password: "Test1",
-      },
-    ];
-
     // this will become an axios call
     const handleSubmit = (event) => {
       setIsSubmitted(true);
       //Prevent page reload
       event.preventDefault();
-      console.log(document.forms[0]);
       var { uname, pass } = document.forms[0];
-      console.log(uname.value);
-      console.log(pass);
 
       var config = {
         method: "get",
@@ -64,9 +41,16 @@ function LoginView() {
 
       axios(config)
         .then(function (response) {
-          var data = JSON.stringify(response.data);
-          localStorage.setItem("userInfo", uname.value);
-          redirect();
+          console.log(response);
+          if (response.data != uname.value) {
+            setIsSubmitted(false);
+
+            setErrorMessages(response.data);
+          } else {
+            localStorage.setItem("userInfo", uname.value);
+            setErrorMessages("");
+            redirect();
+          }
         })
         .catch(function (error) {
           console.log(error);
@@ -91,10 +75,7 @@ function LoginView() {
     };
 
     // Error code jsx messahe
-    const renderErrorMessage = (name) =>
-      name === errorMessages.name && (
-        <div className="error">{errorMessages.message}</div>
-      );
+    const renderErrorMessage = <div className="error">{errorMessages}</div>;
 
     const renderLoading = <div>Loading Please wait..</div>;
     // Form login
@@ -108,7 +89,6 @@ function LoginView() {
             placeholder="Enter username"
             required
           />
-          {renderErrorMessage("uname")}
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -119,7 +99,7 @@ function LoginView() {
             placeholder="Password"
             required
           />
-          {renderErrorMessage("pass")}
+          {renderErrorMessage}
         </Form.Group>
         <Button variant="primary" type="submit">
           Submit

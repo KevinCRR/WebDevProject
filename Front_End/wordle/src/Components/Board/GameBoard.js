@@ -63,8 +63,6 @@ function GameBoard() {
       return;
     }
 
-    console.log(correctWord)
-    console.log(currWord)
     /**
      * gameOver and word was not guessed correctly
      */
