@@ -14,7 +14,10 @@ Final Project For WebDevelopment
 
 ## About
 
+	To see documentation check out: https://github.com/KevinCRR/WebDevProject/tree/main/Documentation
+
 ## Description
+	Web Development Final Project. For this Project We sought out to implement Everything that we've learnt in JS through creating a wordle clone. 
 
 # Run Project
 
@@ -48,8 +51,6 @@ Final Project For WebDevelopment
     WebDevProject/Front_End/wordle/src/Assets and open Wordle.txt using VSCode. On the bottom-right, change "CRLF" to "LF" then save.
     
 
-
-## 3. Build
 
 ## Presentation:
 	
