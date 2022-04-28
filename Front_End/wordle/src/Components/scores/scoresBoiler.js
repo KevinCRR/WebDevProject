@@ -26,12 +26,9 @@ function BarChart({ data }) {
         g.attr("transform", `translate(0,${height - margin.bottom})`).call(
           d3
             .axisBottom(x)
-            .tickValues(
-              d3
-                .ticks(...d3.extent(x.domain()), width / 40)
-                .filter((v) => x(v) !== undefined)
-            )
             .tickSizeOuter(0)
+      
+
         );
 
       const y1Axis = (g) =>
