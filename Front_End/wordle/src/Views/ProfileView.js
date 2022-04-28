@@ -26,7 +26,7 @@ function ProfileView() {
     var WelcomeMessage = "";
     if (scores) {
       WelcomeMessage = scores.map((score) => (
-        <Card border="primary" style={{ width: "18rem" }}>
+        <Card border="primary" style={{ width: "29rem" }}>
           {console.log(score)}
           <Card.Header>Date: {score.date}</Card.Header>
           <Card.Body>
@@ -36,7 +36,7 @@ function ProfileView() {
       ));
     } else {
       WelcomeMessage = (
-        <Card border="primary" style={{ width: "18rem" }}>
+        <Card border="primary" style={{ width: "25rem" }}>
           <Card.Body>You don't have any scores</Card.Body>
         </Card>
       );
@@ -44,7 +44,7 @@ function ProfileView() {
 
     return (
       <div className="register">
-        User:{userInfo}
+        User: {userInfo} 
         {WelcomeMessage}
       </div>
     );

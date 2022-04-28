@@ -113,10 +113,7 @@ def Login(username, password):
     if(userExists):
         if(bcrypt.hashpw(password.encode('utf-8'), userExists['password']) == userExists['password']):
             print("logged in")
-            if (len(fetchScoreUser(username)) == 2):
-                return "null"
-            else:
-                return username
+            return username
         else:
             return "wrong username/password"
     else:
