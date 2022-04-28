@@ -20,6 +20,16 @@ Final Project For WebDevelopment
 
 ### 1. Clone the project
 
+## Run the Back End Before the Front End
+
+## Back End:
+
+    $ cd Back_End
+    $ wordle-backend/Scripts/activate
+    (! if you haven't installed dependencies: $ pip install -r requirements.txt)
+    $ python server.py
+    Note: When you add new dependencies make sure to run: $ pip freeze > requirements.txt
+
 ## Front End:
 
     Linux
@@ -38,12 +48,5 @@ Final Project For WebDevelopment
     WebDevProject/Front_End/wordle/src/Assets and open Wordle.txt using VSCode. On the bottom-right, change "CRLF" to "LF" then save.
     
 
-## Back End:
-
-    $ cd Back_End
-    $ wordle-backend/Scripts/activate
-    (! if you haven't installed dependencies: $ pip install -r requirements.txt)
-    $ python server.py
-    Note: When you add new dependencies make sure to run: $ pip freeze > requirements.txt
 
 ## 3. Build
