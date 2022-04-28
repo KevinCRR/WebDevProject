@@ -1,4 +1,4 @@
-import wordBank from "../../Assets/Wordle.txt"
+import wordBank from "../../Assets/Wordle.txt";
 
 export const defaultBoard = [
   ["", "", "", "", ""],
@@ -10,7 +10,6 @@ export const defaultBoard = [
 ];
 
 export const getWord = async () => {
-
   var axios = require("axios");
   var config = {
     method: "get",
@@ -22,13 +21,13 @@ export const getWord = async () => {
   let todaysWord;
   axios(config)
     .then(function (response) {
-      const selectWord = response.data
+      const selectWord = response.data;
       todaysWord = selectWord;
     })
     .catch(function (error) {
       console.log(error);
     });
-    await fetch(wordBank)
+  await fetch(wordBank)
     .then((response) => response.text())
     .then((result) => {
       const wordArr = result.split("\n");
