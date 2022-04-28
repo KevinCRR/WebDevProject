@@ -43,6 +43,12 @@ function RegisterView() {
     navigate("/");
   };
 
+  function redirectToLogin() {
+    console.log("here");
+    delay(10000);
+    window.location.href = "login";
+  }
+
   // this will become an axios call
   const handleSubmit = (event) => {
     //Prevent page reload
@@ -75,6 +81,7 @@ function RegisterView() {
             setuserName(uname.value);
           }
           setIsSubmitted(true);
+          redirectToLogin()
         })
         .catch(function (error) {
           console.log(error);
