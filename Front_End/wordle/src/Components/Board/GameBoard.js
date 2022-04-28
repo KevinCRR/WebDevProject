@@ -27,13 +27,6 @@ function GameBoard() {
   });
 
   useEffect(() => {
-    getWord().then((words) => {
-      setWordSet(words.wordSet);
-      setCorrectWord(words.todaysWord);
-    });
-    console.log(wordSet);
-  }, []);
-  useEffect(() => {
     async function fetchWords() {
       try {
         getWord().then((words) => {
