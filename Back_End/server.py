@@ -63,7 +63,7 @@ def fetchScoreDate(date):
     db = cluster["WordleCloneDB"]
     scoresCollection = db["scores"]
 
-    return dumps(scoresCollection.find({"date":date}).sort('score', pymongo.DESCENDING).limit(10))
+    return dumps(scoresCollection.find({"date":date}).sort('score', pymongo.DESCENDING).limit(20))
 
 @app.route('/score')
 def fetchScore():
@@ -73,7 +73,7 @@ def fetchScore():
     db = cluster["WordleCloneDB"]
     scoresCollection = db["scores"]
 
-    return dumps(scoresCollection.find().sort('score', pymongo.DESCENDING).limit(10))
+    return dumps(scoresCollection.find().sort('score', pymongo.DESCENDING).limit(20))
 
 @app.route('/register/<username>/<password>')
 def Register(username, password):
@@ -123,5 +123,8 @@ def Login(username, password):
     else:
         print('user does not exist')
         return ""
+
+
+
 if __name__ == "__main__":
   app.run()

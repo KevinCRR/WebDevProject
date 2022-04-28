@@ -1,5 +1,5 @@
 import React, {useContext, useEffect} from 'react'
-import {boardContext} from '../../Views/BoardView'
+import {boardContext} from './GameBoard'
 
 function LetterBoard({ letterPos, attemptVal }) {
   const { board, setDisabledLetters, currAttempt, correctWord } = useContext(boardContext);

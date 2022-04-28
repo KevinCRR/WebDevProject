@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useContext } from "react";
 import Key from "./Key";
-import { boardContext } from "../../Views/BoardView";
+import { boardContext } from "./GameBoard";
 
 function KeyBoard() {
   const keyboard1 = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"];

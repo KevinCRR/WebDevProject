@@ -8,7 +8,7 @@ function BarChart({ data }) {
   const ref = useD3(
     (svg) => {
       const height = 500;
-      const width = 500;
+      const width = 950;
       const margin = { top: 20, right: 30, bottom: 30, left: 40 };
 
       const x = d3
@@ -26,12 +26,9 @@ function BarChart({ data }) {
         g.attr("transform", `translate(0,${height - margin.bottom})`).call(
           d3
             .axisBottom(x)
-            .tickValues(
-              d3
-                .ticks(...d3.extent(x.domain()), width / 40)
-                .filter((v) => x(v) !== undefined)
-            )
             .tickSizeOuter(0)
+      
+
         );
 
       const y1Axis = (g) =>

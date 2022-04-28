@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { boardContext } from "../../Views/BoardView";
+import { boardContext } from "./GameBoard";
 
 /**
  * Checks if the game is over with two checks
@@ -23,7 +23,7 @@ function GameOver() {
       </h3>
       <h1>Correct Word is: {correctWord.toUpperCase()}.</h1>
       {gameOver.guessedWord && (
-        <h3>You guessed in {currAttempt.attempt} attempts</h3>
+        <h3>You Guessed in {currAttempt.attempt} Attempts</h3>
       )}
     </div>
   );
