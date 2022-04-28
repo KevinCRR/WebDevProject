@@ -53,17 +53,18 @@ function BoardView() {
     } else {
       alert("Word not found");
     }
-    console.log(correctWord)
-    console.log(currWord)
+
     /**
      * gameOver and word is correct
      */
-    if (currWord.toLowerCase === correctWord.toLowerCase) {
+    
+    if (currWord === correctWord.toUpperCase()) {
       setGameOver({ gameOver: true, guessedWord: true });
       return;
     }
 
-
+    console.log(correctWord)
+    console.log(currWord)
     /**
      * gameOver and word was not guessed correctly
      */
