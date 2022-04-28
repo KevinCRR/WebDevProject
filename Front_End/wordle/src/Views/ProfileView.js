@@ -10,9 +10,9 @@ function ProfileView() {
       async function fetchData() {
         try {
           const response = await axios.get(
-            "http://127.0.0.1:5000/scoreUser/" + { userInfo }
+            "http://127.0.0.1:5000/scoreUser/" + userInfo
           );
-          setScores(JSON.parse(response.data));
+          setScores(response.data);
         } catch (err) {
           console.log(err);
         }

@@ -116,7 +116,7 @@ def Login(username, password):
             if (len(fetchScoreUser(username)) == 2):
                 return "null"
             else:
-                return fetchScoreUser(username)
+                return username
         else:
             print("wrong username/password")
             return ""

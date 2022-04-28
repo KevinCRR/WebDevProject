@@ -4,6 +4,17 @@ import Button from "react-bootstrap/Button";
 import axios from "axios";
 import "../Styles/login.css";
 import { useNavigate } from "react-router-dom";
+function delay(millis) {
+  new Promise((resolve, reject) => {
+    setTimeout((_) => resolve(), millis);
+  });
+}
+
+function redirect() {
+  console.log("here");
+  delay(10000);
+  window.location.href = "profile";
+}
 
 function LoginView() {
   // states for error handling and login flags
@@ -35,17 +46,6 @@ function LoginView() {
       },
     ];
 
-    const delay = (millis) =>
-      new Promise((resolve, reject) => {
-        setTimeout((_) => resolve(), millis);
-      });
-
-    const redirect = async () => {
-      console.log("here");
-      await delay(10000);
-      navigate("/");
-    };
-
     // this will become an axios call
     const handleSubmit = (event) => {
       setIsSubmitted(true);
@@ -65,14 +65,8 @@ function LoginView() {
       axios(config)
         .then(function (response) {
           var data = JSON.stringify(response.data);
-          if (data.includes("[")) {
-            localStorage.setItem("userInfo", data);
-            data = JSON.parse(data);
-            setuserName(data[0].username);
-            // setter
-          } else {
-            localStorage.setItem("userInfo", uname.value);
-          }
+          localStorage.setItem("userInfo", uname.value);
+          redirect();
         })
         .catch(function (error) {
           console.log(error);
@@ -139,9 +133,7 @@ function LoginView() {
           <div className="sign-title">{isSignedIn}</div>
           {isSubmitted ? (
             userName ? (
-              <div>
-                {userName} is successfully logged in {redirect}
-              </div>
+              <div>{userName} is successfully logged in</div>
             ) : (
               renderLoading
             )
