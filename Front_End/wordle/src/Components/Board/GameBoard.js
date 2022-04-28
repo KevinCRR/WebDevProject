@@ -31,7 +31,6 @@ function GameBoard() {
       try {
         getWord().then((words) => {
           setWordSet(words.wordSet);
-          console.log(words.wordSet);
           setCorrectWord(words.todaysWord);
         });
       } catch (err) {
