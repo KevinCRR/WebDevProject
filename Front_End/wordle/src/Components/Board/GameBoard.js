@@ -26,14 +26,27 @@ function GameBoard() {
     guessedWord: false,
   });
 
-  useEffect(() =>{
+  useEffect(() => {
     getWord().then((words) => {
-      setWordSet(words.wordSet)
-      setCorrectWord(words.todaysWord)
-    })
-  },[]);
-
-  
+      setWordSet(words.wordSet);
+      setCorrectWord(words.todaysWord);
+    });
+    console.log(wordSet);
+  }, []);
+  useEffect(() => {
+    async function fetchWords() {
+      try {
+        getWord().then((words) => {
+          setWordSet(words.wordSet);
+          console.log(words.wordSet);
+          setCorrectWord(words.todaysWord);
+        });
+      } catch (err) {
+        console.log(err);
+      }
+    }
+    fetchWords();
+  }, []);
 
   /**
    *
@@ -57,7 +70,7 @@ function GameBoard() {
     /**
      * gameOver and word is correct
      */
-    
+
     if (currWord === correctWord.toUpperCase()) {
       setGameOver({ gameOver: true, guessedWord: true });
       return;
