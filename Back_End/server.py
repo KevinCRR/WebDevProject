@@ -118,11 +118,9 @@ def Login(username, password):
             else:
                 return username
         else:
-            print("wrong username/password")
-            return ""
+            return "wrong username/password"
     else:
-        print('user does not exist')
-        return ""
+        return "user does not exist"
 
 
 
