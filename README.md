@@ -49,7 +49,15 @@ Final Project For WebDevelopment
 
     Note: If a valid word is "not found" when playing even though word is valid, open: 
     WebDevProject/Front_End/wordle/src/Assets and open Wordle.txt using VSCode. On the bottom-right, change "CRLF" to "LF" then save.
-    
+
+## TEST:
+
+	Accounts to use to test:
+		username: peter
+		password: Peter1
+	you can also create your own account to test features. 
+	
+	Sometimes when loading the wordle page for the first time, you might need to reload. 
 
 
 ## Presentation:
