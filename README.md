@@ -34,7 +34,7 @@ Final Project For WebDevelopment
 
     Note: When you add new dependencies make sure to add --save at the end of your command
 
-    Note: If a valid word is "not found" when plaaying even though word is valid, open: 
+    Note: If a valid word is "not found" when playing even though word is valid, open: 
     WebDevProject/Front_End/wordle/src/Assets and open Wordle.txt using VSCode. On the bottom-left, change "CRLF" to "LF" then save.
     
 
